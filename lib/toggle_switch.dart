@@ -128,6 +128,9 @@ class ToggleSwitch extends StatefulWidget {
   /// Box shadow for active toggle
   List<BoxShadow>? boxShadow;
 
+  /// add FG padding
+  final EdgeInsetsGeometry? fgPadding;
+
   ToggleSwitch({
     Key? key,
     this.totalSwitches,
@@ -169,6 +172,7 @@ class ToggleSwitch extends StatefulWidget {
     this.customWidgets,
     this.padding,
     this.boxShadow,
+    this.fgPadding,
   }) : super(key: key);
 
   @override
@@ -375,7 +379,8 @@ class _ToggleSwitchState extends State<ToggleSwitch>
       child: GestureDetector(
         onTap: () => states[index ~/ 2] ? _handleOnTap(index ~/ 2) : null,
         child: AnimatedContainer(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          padding:
+              widget.fgPadding ?? const EdgeInsets.symmetric(horizontal: 10.0),
           constraints: BoxConstraints(
             maxWidth:
                 widget.isVertical ? const BoxConstraints().maxWidth : width,
