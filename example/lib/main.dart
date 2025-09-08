@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 void main() => runApp(
       MaterialApp(
@@ -239,12 +239,32 @@ class MyApp extends StatelessWidget {
                     [Colors.green[800]!],
                     [Colors.red[800]!]
                   ],
+                  activeBorders: [
+                    Border.all(
+                      color: Colors.green,
+                      width: 1.0,
+                    ),
+                    Border.all(
+                      color: Colors.red,
+                      width: 1.0,
+                    ),
+                  ],
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      spreadRadius: 1,
+                      blurRadius: 3,
+                      offset: const Offset(0, 1),
+                    ),
+                  ],
+                  customWidths: [100.0, 53.0],
                   activeFgColor: Colors.white,
-                  inactiveBgColor: Colors.grey,
-                  inactiveFgColor: Colors.white,
+                  inactiveBgColor: Colors.grey[300],
+                  inactiveFgColor: Colors.red,
+                  padding: const EdgeInsets.all(4),
                   initialLabelIndex: 1,
                   totalSwitches: 2,
-                  labels: ['True', 'False'],
+                  labels: ['Exchange', 'Pay'],
                   radiusStyle: true,
                   onToggle: (index) {
                     print('switched to: $index');

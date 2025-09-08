@@ -1,8 +1,8 @@
 //Credit : @Eugene (https://stackoverflow.com/questions/56340682/flutter-equvalent-android-toggle-switch)
-import 'package:flutter/material.dart';
-import 'package:toggle_switch/src/custom_border_paint.dart';
 import 'dart:math';
 
+import 'package:flutter/material.dart';
+import 'package:toggle_switch/src/custom_border_paint.dart';
 import 'package:toggle_switch/src/row_to_column.dart';
 import 'package:toggle_switch/src/utils.dart';
 
@@ -122,6 +122,12 @@ class ToggleSwitch extends StatefulWidget {
   /// Set custom widget
   final List<Widget>? customWidgets;
 
+  /// add padding to the item switch
+  final EdgeInsetsGeometry? padding;
+
+  /// Box shadow for active toggle
+  List<BoxShadow>? boxShadow;
+
   ToggleSwitch({
     Key? key,
     this.totalSwitches,
@@ -161,6 +167,8 @@ class ToggleSwitch extends StatefulWidget {
     this.centerText = false,
     this.multiLineText = false,
     this.customWidgets,
+    this.padding,
+    this.boxShadow,
   }) : super(key: key);
 
   @override
@@ -241,6 +249,7 @@ class _ToggleSwitchState extends State<ToggleSwitch>
       ),
       child: Container(
         margin: EdgeInsets.all(_borderWidth),
+        padding: widget.padding ?? EdgeInsets.zero,
         decoration: BoxDecoration(
           color: inactiveBgColor,
           borderRadius: BorderRadius.circular(_cornerRadius),
@@ -384,6 +393,7 @@ class _ToggleSwitchState extends State<ToggleSwitch>
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
+            boxShadow: active ? widget.boxShadow : null,
           ),
           duration: Duration(
               milliseconds: widget.animate ? widget.animationDuration : 0),
